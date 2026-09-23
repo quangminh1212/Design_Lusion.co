@@ -18,7 +18,8 @@ The original Play Reel button uses Vimeo video 761102167, titled "Lusion Reel 20
 
 ## Verification
 
-- All 22 routes reached the site's ready state in desktop Chrome and an iPhone-sized 390 x 844 viewport.
+- All 22 routes reached the site's ready state in desktop Chrome and an iPhone-sized 390 x 844 viewport, including runs with all external HTTPS blocked.
+- Mobile menu navigation to Projects worked with external HTTPS blocked.
 - Local routes returned successfully, and observed local asset requests returned HTTP 200 or 206 with no 404s.
 - 576 asset paths were compared with current live responses by SHA-256; all matched the corresponding repository files.
 - All 22 HTML pages matched after normalizing local URL rewrites and analytics snippets. The CSS matched byte for byte. The JavaScript matched byte for byte after removing the original CDN and host-redirect rules.
