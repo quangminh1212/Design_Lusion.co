@@ -2,7 +2,7 @@
 
 A self-hosted recreation of the public Lusion studio website, captured on 23 September 2026. The repository contains the Home, About, Projects archive, and all 19 project detail routes. The site HTML, compiled JavaScript, CSS, fonts, images, 3D models, audio, and project videos are served from this repository.
 
-The local server serves repository files directly and makes no runtime requests to lusion.co or lusion.dev. It does not proxy or embed the original site. Normal outbound links, mail links, and the original Play Reel integration remain part of the page.
+The local server serves repository files directly and does not proxy or embed the original site. Page assets load from this repository. Links to outside sites remain navigation links. Vimeo video playback and the newsletter subscription are disabled in this local copy so those actions do not send runtime requests outside the repository.
 
 ## Run locally
 
@@ -14,16 +14,19 @@ Open http://127.0.0.1:4173. The server supports direct loading of nested pages a
 
 ## Known media limitation
 
-The original Play Reel button uses Vimeo video 761102167, titled "Lusion Reel 2023". Vimeo metadata reports a duration of 107 seconds, but its player returned HTTP 401 and its config endpoint returned HTTP 403 during this audit. The two local files at assets/textures/reel/ are 11.5-second looping background textures; they are not copies of the full Vimeo reel. The Play Reel overlay therefore still depends on Vimeo and did not open in the audited environment. All other observed site assets are local.
+The original Play Reel is Vimeo video 761102167, titled "Lusion Reel 2023" (107 seconds). The Porsche: Dream Machine Watch Video link is Vimeo video 783015830 (115 seconds). Neither video has a public download available from its Vimeo page. The repository's reel textures and Porsche project clips are short background loops, not copies of those complete films, so the local copy does not substitute them. Selecting either video shows an offline notice and makes no Vimeo request. The newsletter form displays a local-only notice and does not contact Mailchimp.
+
+The web manifest's Android icons are local resized copies of the repository's Apple touch icon.
 
 ## Verification
 
-- All 22 routes reached the site's ready state in desktop Chrome and an iPhone-sized 390 x 844 viewport, including runs with all external HTTPS blocked.
-- Mobile menu navigation to Projects worked with external HTTPS blocked.
-- Local routes returned successfully, and observed local asset requests returned HTTP 200 or 206 with no 404s.
+- All 22 routes return HTTP 200 and include the local-only guard and app bundle.
+- A scan of all 22 HTML pages found 296 resource attributes, with no external HTML or CSS asset URLs.
+- Desktop Chrome loaded the home and Porsche routes using only `127.0.0.1:4173`; observed requests returned HTTP 200 or 206 with no failures.
+- Clicking the Reel and Porsche video links shows a local notice without creating a Vimeo iframe or request. Submitting the newsletter form shows a local notice without contacting Mailchimp.
 - 576 asset paths were compared with current live responses by SHA-256; all matched the corresponding repository files.
 - All 22 HTML pages matched after normalizing local URL rewrites and analytics snippets. The CSS matched byte for byte. The JavaScript matched byte for byte after removing the original CDN and host-redirect rules.
-- The local browser crawl made no requests to lusion.co or lusion.dev. Vimeo was the only external runtime origin observed.
+- The local browser crawl made no requests to lusion.co, lusion.dev, Vimeo, or Mailchimp.
 
 ## Pages
 
