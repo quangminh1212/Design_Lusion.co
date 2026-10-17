@@ -8,7 +8,7 @@ The local server serves repository files directly and does not proxy or embed th
 
 Requires Node.js 18 or newer. No package installation is needed.
 
-    npm start
+    pnpm start
 
 Open http://127.0.0.1:4173. The server supports direct loading of nested pages and byte-range requests for local MP4 files.
 
