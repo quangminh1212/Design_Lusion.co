@@ -10,7 +10,7 @@ Requires Node.js 18 or newer. No package installation is needed.
 
     pnpm start
 
-Open http://127.0.0.1:4173. The server supports direct loading of nested pages and byte-range requests for local MP4 files.
+Open http://127.0.0.1:4177. The server supports direct loading of nested pages and byte-range requests for local MP4 files.
 
 ## Known media limitation
 
@@ -22,7 +22,7 @@ The web manifest's Android icons are local resized copies of the repository's Ap
 
 - All 22 routes return HTTP 200 and include the local-only guard and app bundle.
 - A scan of all 22 HTML pages found 296 resource attributes, with no external HTML or CSS asset URLs.
-- Desktop Chrome loaded the home and Porsche routes using only `127.0.0.1:4173`; observed requests returned HTTP 200 or 206 with no failures.
+- Desktop Chrome loaded the home and Porsche routes using only `127.0.0.1:4177`; observed requests returned HTTP 200 or 206 with no failures.
 - iPhone 12 emulation at 390 x 844 (DPR 3) loaded Home and Porsche; the mobile menu navigated to Projects and the Porsche video action stayed local.
 - Clicking the Reel and Porsche video links shows a local notice without creating a Vimeo iframe or request. Submitting the newsletter form shows a local notice without contacting Mailchimp.
 - 576 asset paths were compared with current live responses by SHA-256; all matched the corresponding repository files.
